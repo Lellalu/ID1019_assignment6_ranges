@@ -34,7 +34,7 @@ defmodule Seeds do
       [dest, source, range-1], Map.put(map, source+range-1, dest+range-1))
   end
 
-  def get_min_location() do
+  def get_location() do
     [seeds, sts, stf, ftw, wtl, ltt, tth, htl] = parse_file()
     locations = Enum.map(seeds, fn(seed)->
       soil = Map.get(sts, seed, seed)
@@ -45,6 +45,9 @@ defmodule Seeds do
       humidity = Map.get(tth, temperature, temperature)
       Map.get(htl, humidity, humidity)
     end)
-    Enum.min(locations)
+  end
+
+  def min(list) do
+    Enum.min(list)
   end
 end
